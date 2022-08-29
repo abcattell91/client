@@ -1,10 +1,17 @@
 import React from "react";
 
 class GoogleAuth extends React.Component {
+  state = { isSignedIn: null };
+
   componentDidMount() {
     window.gapi.load('client:auth2', () => {
       window.gapi.client.init({
-        clientId: '1054744401067-6huu069803v93cqbin2r7umrrps73g9a.apps.googleusercontent.com'
+        clientId: '1054744401067-6huu069803v93cqbin2r7umrrps73g9a.apps.googleusercontent.com',
+        scope: 'email',
+        plugin_name: "streamy"
+      }).then(() => { // returns a promise when library is initialized
+        this.auth = window.gapi.auth2.getAuthInstance();
+        this.setState({ isSignedIn: this.auth.isSignedIn.get() });
       });
     });
   }
