@@ -10,12 +10,18 @@ class StreamCreate extends React.Component {
       </div>
     )
   }
+
+  onSubmit(formValues) {
+    console.log(formValues)
+  };
+
   render() {
     // use FIELD when wanting to show a field to a user
     return (
-      <form className="ui form">
+      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form">
         <Field name="Title" component={this.renderInput} label="Enter Title" />
         <Field name="Description" component={this.renderInput} label="Enter Description" />
+        <button className="ui button primary">Submit</button>
       </form>
     )
   };
