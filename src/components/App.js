@@ -1,4 +1,5 @@
 import React from "react"
+import '../style/App.css'
 import { Router, Route, Switch } from 'react-router-dom'
 import StreamCreate from "./streams/StreamCreate";
 import StreamEdit from "./streams/StreamEdit";
